@@ -36,15 +36,9 @@ export CUDA_HOME=/usr/local/cuda-12.8
 export PATH=$CUDA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 export HF_HOME=/proj/inf-scaling/huggingface
-export TMPDIR=/proj/inf-scaling/TMP
 
 export WANDB_API_KEY=55e59d4db1f11a22713ac08a884b1b44ce20caf2
-export WANDB_PROJECT=llamafactory-mathcanvas-sft
-export WANDB_NAME=mathcanvas-llava3-8b-full-sft
-
-llamafactory-cli train examples/train_full/llava_full_sft_mathcanvas.yaml
-
 export WANDB_PROJECT=llamafactory-mathcanvas-dpo
-export WANDB_NAME=mathcanvas-llava3-8b-full-dpo
+export WANDB_NAME=mathcanvas-qwen3vl-8b-full-dpo
 
-llamafactory-cli train examples/train_full/llava_full_dpo_mathcanvas.yaml
+llamafactory-cli train examples/train_full/qwen3vl_full_dpo_mathcanvas.yaml

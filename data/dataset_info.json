@@ -15,6 +15,23 @@
       "observation_tag": "tool"
     }
   },
+  "mathcanvas_dpo": {
+    "file_name": "dpo_pairs.jsonl",
+    "ranking": true,
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "chosen": "chosen",
+      "rejected": "rejected",
+      "images": "images"
+    },
+    "tags": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
   "identity": {
     "file_name": "identity.json"
   },

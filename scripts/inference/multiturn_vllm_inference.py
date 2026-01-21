@@ -39,15 +39,14 @@ logger = logging.getLogger(__name__)
 # System Prompt Configuration
 # ============================================================================
 
-prompt_path = "/proj/inf-scaling/csl/svglm/data/system_prompt_svgtool.txt"
-with open(prompt_path, "r") as f:
+prompt_path_tool = "/proj/inf-scaling/csl/svglm/data/system_prompt_svgtool.txt"
+prompt_path_notool = "/proj/inf-scaling/csl/svglm/data/system_prompt_raw.txt"
+
+with open(prompt_path_tool, "r") as f:
     SYSTEM_PROMPT_WITH_TOOL = f.read().strip()
 
-SYSTEM_PROMPT_WITHOUT_TOOL = (
-    "You are an expert in solving plane geometry reasoning problems. "
-    "Your final answer should be presented as: \\boxed{answer}"
-)
-
+with open(prompt_path_notool, "r") as f:
+    SYSTEM_PROMPT_WITHOUT_TOOL = f.read().strip()
 
 def get_system_prompt(enable_tool_call: bool = True) -> str:
     """Get the appropriate system prompt based on tool call setting."""

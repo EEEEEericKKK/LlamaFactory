@@ -40,10 +40,10 @@ export TMPDIR=/proj/inf-scaling/TMP
 
 export WANDB_API_KEY=55e59d4db1f11a22713ac08a884b1b44ce20caf2
 export WANDB_PROJECT=llamafactory-mathcanvas-sft
-export WANDB_NAME=mathcanvas-raw-qwen3vl-8b-full-sft
+export WANDB_NAME=mathcanvas-answeronly-llava3-8b-full-sft
 
-llamafactory-cli train examples/train_full/qwen3vl_full_sft_mathcanvas.yaml \
-  --dataset mathcanvas_raw \
-  --output_dir saves/qwen3-vl-8b/full/sft_raw_mathcanvas
+llamafactory-cli train examples/train_full/llava_full_sft_mathcanvas.yaml \
+  --dataset mathcanvas_answeronly \
+  --output_dir saves/llava-v1.6-mistral-7b-hf/full/sft_answeronly_mathcanvas
 
-TRAIN_TYPE=sft_raw ENABLE_TOOL_CALL=0 NUM_GPUS=8 bash scripts/inference/run_inference_qwen.sh
+TRAIN_TYPE=sft_answeronly ENABLE_TOOL_CALL=0 NUM_GPUS=8 bash scripts/inference/run_inference_llava.sh

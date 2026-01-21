@@ -42,6 +42,8 @@ export WANDB_API_KEY=55e59d4db1f11a22713ac08a884b1b44ce20caf2
 export WANDB_PROJECT=llamafactory-mathcanvas-sft
 export WANDB_NAME=mathcanvas-raw-llava3-8b-full-sft
 
-llamafactory-cli train examples/train_full/llava_full_sft_raw_mathcanvas.yaml
+llamafactory-cli train examples/train_full/llava_full_sft_mathcanvas.yaml \
+  --dataset mathcanvas_raw \
+  --output_dir saves/llava-v1.6-mistral-7b-hf/full/sft_raw_mathcanvas
 
-TRAIN_TYPE=sft_raw NUM_GPUS=8 bash scripts/inference/run_inference_llava.sh
+TRAIN_TYPE=sft_raw ENABLE_TOOL_CALL=0 NUM_GPUS=8 bash scripts/inference/run_inference_llava.sh

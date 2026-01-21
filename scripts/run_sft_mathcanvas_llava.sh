@@ -44,7 +44,4 @@ export WANDB_NAME=mathcanvas-llava3-8b-full-sft
 
 llamafactory-cli train examples/train_full/llava_full_sft_mathcanvas.yaml
 
-export WANDB_PROJECT=llamafactory-mathcanvas-dpo
-export WANDB_NAME=mathcanvas-llava3-8b-full-dpo
-
-llamafactory-cli train examples/train_full/llava_full_dpo_mathcanvas.yaml
+TRAIN_TYPE=sft NUM_GPUS=8 bash scripts/inference/run_inference_llava.sh

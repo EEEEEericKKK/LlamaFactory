@@ -42,3 +42,5 @@ export WANDB_PROJECT=llamafactory-mathcanvas-dpo
 export WANDB_NAME=mathcanvas-qwen3vl-8b-full-dpo
 
 llamafactory-cli train examples/train_full/qwen3vl_full_dpo_mathcanvas.yaml
+
+TRAIN_TYPE=dpo NUM_GPUS=8 bash scripts/inference/run_inference_qwen.sh

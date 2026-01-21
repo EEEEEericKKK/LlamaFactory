@@ -12,25 +12,23 @@ export HF_HOME=/proj/inf-scaling/huggingface
 export TMPDIR=/proj/inf-scaling/TMP
 export VLLM_CACHE_ROOT=/proj/inf-scaling/csl/.cache
 
-export WANDB_API_KEY=55e59d4db1f11a22713ac08a884b1b44ce20caf2
-export WANDB_PROJECT=llamafactory-mathcanvas-sft
-export WANDB_NAME=mathcanvas-llava3-8b-full-sft
-
 # ============================================================================
 # Default Configuration
 # ============================================================================
 
+TRAIN_TYPE="${TRAIN_TYPE:-dpo}"
+
 # Model configuration
-MODEL_PATH="${MODEL_PATH:-/proj/inf-scaling/csl/svglm/LlamaFactory/saves/llava-v1.6-mistral-7b-hf/full/sft_mathcanvas}"
+MODEL_PATH="${MODEL_PATH:-/proj/inf-scaling/csl/svglm/LlamaFactory/saves/llava-v1.6-mistral-7b-hf/full/${TRAIN_TYPE}_mathcanvas}"
 TENSOR_PARALLEL_SIZE="${TENSOR_PARALLEL_SIZE:-1}"
 GPU_MEMORY_UTILIZATION="${GPU_MEMORY_UTILIZATION:-0.9}"
-MAX_MODEL_LEN="${MAX_MODEL_LEN:-16384}"
+MAX_MODEL_LEN="${MAX_MODEL_LEN:-32768}"
 MAX_NUM_SEQS="${MAX_NUM_SEQS:-32}"
-NUM_GPUS="${NUM_GPUS:-8}"  # Number of GPUs for data parallelism
+NUM_GPUS="${NUM_GPUS:-1}"  # Number of GPUs for data parallelism
 
 # Data configuration
 DATA_PATH="${DATA_PATH:-/proj/inf-scaling/csl/svglm/data/hf_template/mathcanvas_test/mathcanvas_test.parquet}"
-OUTPUT_PATH="${OUTPUT_PATH:-/proj/inf-scaling/csl/svglm/verl/outputs/inference/Mathcanvas-llava-sft.jsonl}"
+OUTPUT_PATH="${OUTPUT_PATH:-/proj/inf-scaling/csl/svglm/LlamaFactory/outputs/inference/Mathcanvas-llava-${TRAIN_TYPE}.jsonl}"
 MESSAGES_KEY="${MESSAGES_KEY:-messages}"
 IMAGE_KEY="${IMAGE_KEY:-question_images}"
 VIDEO_KEY="${VIDEO_KEY:-videos}"
@@ -44,7 +42,7 @@ DATASET_FORMAT="${DATASET_FORMAT:-mathcanvas}"  # Dataset format: "sft" or custo
 MAX_TURNS="${MAX_TURNS:-3}"
 TEMPERATURE="${TEMPERATURE:-0.7}"
 TOP_P="${TOP_P:-0.9}"
-MAX_TOKENS="${MAX_TOKENS:-16384}"
+MAX_TOKENS="${MAX_TOKENS:-32768}"
 ENABLE_TOOL_CALL="${ENABLE_TOOL_CALL:-true}"
 
 
@@ -72,7 +70,7 @@ echo "=================================="
 echo ""
 
 # Build python command
-CMD="python ${SCRIPT_DIR}/multiturn_vllm_inference.py"
+CMD="python scripts/inference/multiturn_vllm_inference.py"
 CMD="$CMD --model_path $MODEL_PATH"
 CMD="$CMD --tensor_parallel_size $TENSOR_PARALLEL_SIZE"
 CMD="$CMD --gpu_memory_utilization $GPU_MEMORY_UTILIZATION"

@@ -1,6 +1,6 @@
 {
   "mathcanvas": {
-    "file_name": "mathcanvas_bench_svgtool.json",
+    "file_name": "mathcanvas_instruct_svgtool.json",
     "formatting": "sharegpt",
     "columns": {
       "messages": "messages",
@@ -13,6 +13,21 @@
       "assistant_tag": "assistant",
       "system_tag": "system",
       "observation_tag": "tool"
+    }
+  },
+  "mathcanvas_raw": {
+    "file_name": "mathcanvas_instruct_no_solimg.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "messages",
+      "images": "images"
+    },
+    "tags": {
+      "role_tag": "role",
+      "content_tag": "content",
+      "user_tag": "user",
+      "assistant_tag": "assistant",
+      "system_tag": "system"
     }
   },
   "mathcanvas_dpo": {
